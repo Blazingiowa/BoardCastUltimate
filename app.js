@@ -17,6 +17,7 @@ const path = require('path');
 //静的ファイルのルーティング
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+app.use('/chat', express.static(path.join(__dirname, 'public/chatroom.html')));
 //その他リクエストに対するエラー
 app.use((req, res) => {
     res.sendStatus(404);
