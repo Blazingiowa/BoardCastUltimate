@@ -15,3 +15,16 @@ $(function () {
 $(document).ready(function () {
     $('#jmap').jmap();
 });
+
+/**
+ * Chatroom.htmlのときにのみ処理
+ */
+
+if (window.location.href.split('/').pop() == 'chat') {
+    $(function () {
+        $('.btn').css({
+            'background-color': 'rgba(112,108,170,0.7)',
+            'color': '#f3f3f2'
+        });
+    })
+}

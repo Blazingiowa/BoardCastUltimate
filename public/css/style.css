@@ -950,7 +950,7 @@ body.light-mode .video-bg:before {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 10px 15px;
+  padding: 1.7% 4.5%;
   text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
   background: #7AB893;
   border-top-left-radius: 3px;
@@ -1022,7 +1022,7 @@ body.light-mode .video-bg:before {
 	height: 100px;
 	position: absolute;
 	top: 50%;
-	left: 50%;
+	left: 120%;
 	transform: translate(-50%, -50%);
 }
 
