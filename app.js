@@ -59,6 +59,7 @@ io.on('connection', function (socket) {
 
     socket.on("post",(msg)=>{
         io.emit("member-post",msg)
+        console.log("うわああああああ");
     })
 });
 

@@ -6,11 +6,7 @@ const WHOAMI={
     name:null //名前
 }
 $(function () {
-    //送信ボタンが押されたら
-    $(".btn-contain").click(function(){
-        $("#message_form").submit();
-        return false;
-    })
+    
 
     const socket=io();
 
@@ -29,7 +25,6 @@ $(function () {
      */
 
     $("#message_form").submit(function(){
-
         //入力内容取得
         const msg=$("#artist").val();
         console.log(msg);
@@ -46,7 +41,7 @@ $(function () {
         //発言フォームリセット
         $("#artist").val("");
 
-
+        return false;
     });
 
     /**
@@ -66,14 +61,18 @@ $(function () {
      */
 
     function addMessage(msg,is_me=false){
-        const list=$(".chat-thread");
+        const list=document.getElementsByClassName("chat-thread")
+        const li=document.createElement("li");
 
         if(is_me){
-            console.log("自分の発言です");
+            li.classList.add("partner-thread");
         }
         else{
-            console.log("相手の発言です");
+            li.classList.add("my-thread");
         }
+
+        li.textContent=msg.text;
+        list[0].appendChild(li);
     }
 });
 
