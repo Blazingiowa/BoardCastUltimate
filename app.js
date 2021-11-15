@@ -2,8 +2,8 @@
  * function
  */
 
-function ExpressRouting(url){
-    var exp=express.static(path.join(__dirname,url));
+function ExpressRouting(url) {
+    var exp = express.static(path.join(__dirname, url));
     return exp;
 }
 
@@ -12,7 +12,7 @@ function ExpressRouting(url){
  */
 
 //express モジュールインスタンス生成
-const crypto=require('crypto');
+const crypto = require('crypto');
 const express = require('express');
 const app = express();
 const port = process.env.port || 3000;
@@ -29,7 +29,8 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.use('/chat', ExpressRouting('public/chatroom.html'));
 
-app.use('/deb',ExpressRouting('public/titlewindow.html'));
+app.use('/deb', ExpressRouting('public/titlewindow.html'));
+app.use('/upload', ExpressRouting('public/upload.html'));
 //その他リクエストに対するエラー
 app.use((req, res) => {
     res.sendStatus(404);
@@ -45,20 +46,20 @@ io.on('connection', function (socket) {
     /**
      * ログイン
      */
-    (()=>{
+    (() => {
         //トークン作成
-        const token=makeToken(socket.id);
+        const token = makeToken(socket.id);
 
         //ご本人にトークンを送る
-        io.to(socket.id).emit("token",{token:token});
+        io.to(socket.id).emit("token", { token: token });
     })();
 
     /*socket.on('message', function (msg) {
         console.log(msg);
     });*/
 
-    socket.on("post",(msg)=>{
-        io.emit("member-post",msg)
+    socket.on("post", (msg) => {
+        io.emit("member-post", msg)
     })
 });
 
@@ -68,9 +69,9 @@ io.on('connection', function (socket) {
  * @param {string} id - socket.id
  * @return {string}
  */
-function makeToken(id){
-    const str="ouijaboarddemon"+id;
-    return(crypto.createHash("sha1").update(str).digest('hex'));
+function makeToken(id) {
+    const str = "ouijaboarddemon" + id;
+    return (crypto.createHash("sha1").update(str).digest('hex'));
 }
 
 

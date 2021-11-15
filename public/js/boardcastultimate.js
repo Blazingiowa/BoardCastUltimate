@@ -1,46 +1,47 @@
 /**
  * socket.io宣言
  */
-const WHOAMI={
-    token:null,//トークン
-    name:null //名前
+const WHOAMI = {
+    token: null,//トークン
+    name: null //名前
 }
 $(function () {
     //送信ボタンが押されたら
-    $(".btn-contain").click(function(){
+    //submitだとボタン反応しません
+    $(".btn-contain").click(function () {
         $("#message_form").submit();
         return false;
     })
 
-    const socket=io();
+    const socket = io();
 
     //正常に接続したら・・・
-    socket.on("connect",()=>{
+    socket.on("connect", () => {
         console.log("接続されました");
     });
 
     //トークン発行されましたら・・・
-    socket.on("token",(data)=>{
-        WHOAMI.token=data.token;
+    socket.on("token", (data) => {
+        WHOAMI.token = data.token;
     });
 
     /**
      * チャット処理
      */
 
-    $("#message_form").submit(function(){
+    $("#message_form").submit(function () {
 
         //入力内容取得
-        const msg=$("#artist").val();
+        const msg = $("#artist").val();
         console.log(msg);
-        if(msg===""){
+        if (msg === "") {
             return (false);
         }
 
         //Socket.ioサーバへ送信
-        socket.emit("post",{
-            text:msg,
-            token:WHOAMI.token
+        socket.emit("post", {
+            text: msg,
+            token: WHOAMI.token
         });
 
         //発言フォームリセット
@@ -52,9 +53,9 @@ $(function () {
     /**
      * 誰かが発言
      */
-    socket.on("member-post",(msg)=>{
-        const is_me=(msg.token===WHOAMI.token);
-        addMessage(msg,is_me);
+    socket.on("member-post", (msg) => {
+        const is_me = (msg.token === WHOAMI.token);
+        addMessage(msg, is_me);
     });
 
     /**
@@ -65,13 +66,13 @@ $(function () {
      * @return {void}
      */
 
-    function addMessage(msg,is_me=false){
-        const list=$(".chat-thread");
+    function addMessage(msg, is_me = false) {
+        const list = $(".chat-thread");
 
-        if(is_me){
+        if (is_me) {
             console.log("自分の発言です");
         }
-        else{
+        else {
             console.log("相手の発言です");
         }
     }
