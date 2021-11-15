@@ -58,8 +58,9 @@ io.on('connection', function (socket) {
         console.log(msg);
     });*/
 
-    socket.on("post", (msg) => {
-        io.emit("member-post", msg)
+    socket.on("post",(msg)=>{
+        io.emit("member-post",msg)
+        console.log("うわああああああ");
     })
 });
 
