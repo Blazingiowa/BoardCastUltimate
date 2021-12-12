@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&family=Noto+Serif+JP:wght@200&display=swap');
 * {
   outline: none;
   box-sizing: border-box;
@@ -10,7 +11,7 @@
   --border-color: rgba(113 119 144 / 25%);
   --theme-color: #f9fafb;
   --inactive-color: rgb(113 119 144 / 78%);
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Noto Serif JP', serif;
   --hover-menu-bg: rgba(12 15 25 / 30%);
   --content-title-color: #999ba5;
   --content-bg: rgb(146 151 179 / 13%);
@@ -56,7 +57,13 @@ body {
   padding: 2em;
   width: 100%;
   height: 100vh;
+  scrollbar-width: none;
 }
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
 @media screen and (max-width: 480px) {
   body {
     padding: 0.8em;
@@ -1494,4 +1501,224 @@ body.light-mode .video-bg:before {
     width: 100%;
     height: 100%;
   }
+}
+
+.btn-tertiary {
+  color: #555;
+  padding: 0;
+  line-height: 40px;
+  width: 300px;
+  margin: auto;
+  display: block;
+  border: 2px solid #555;
+}
+.btn-tertiary:hover, .btn-tertiary:focus {
+  color: #888888;
+  border-color: #888888;
+}
+
+/* input file style */
+.input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.input-file + .js-labelFile {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.input-file + .js-labelFile .icon:before {
+  content: "";
+}
+.input-file + .js-labelFile.has-file .icon:before {
+  content: "";
+  color: #5AAC7B;
+}
+
+.btnup{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0, 700%);
+    border-radius: 4px;
+    background: #333;
+    text-align: center;
+    z-index: 10;
+    transition: 0.2s;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 0px 1px 5px 2px #bfceef;
+}
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  /* background-color: - add your own background-color */
+  font-family: "Roboto", sans-serif;
+  /* put your font-family */
+  font-size: 18px;
+  padding: 20px 0px;
+  width: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* effect-1 styles */
+.effect.effect-1 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-1:before {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 15px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  width: 40px;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-1:hover {
+  text-indent: -20px;
+}
+.effect.effect-1:hover:before {
+  opacity: 1;
+  text-indent: 0px;
+}
+
+/* effect-2 styles */
+.effect.effect-2 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-2:before {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 30px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0px 6px 6px 0px;
+  transition: all 0.2s linear 0s;
+  text-align: center;
+}
+.effect.effect-2:hover {
+  text-indent: -30px;
+}
+.effect.effect-2:hover:before {
+  right: 0;
+  text-indent: 0px;
+}
+
+/* effect-3 styles */
+.effect.effect-3 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-3:before {
+  content: "";
+  font-family: FontAwesome;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-3:hover {
+  text-indent: -9999px;
+}
+.effect.effect-3:hover:before {
+  top: 0;
+  text-indent: 0;
+}
+
+/* effect-4 styles */
+.effect.effect-4 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-4:before {
+  content: "";
+  font-family: FontAwesome;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+  transform: scale(0, 1);
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-4:hover {
+  text-indent: -9999px;
+}
+.effect.effect-4:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
+}
+
+/* effect-5 styles */
+.effect.effect-5 {
+  position: absolute;
+  transform: translate(20%,1100%);
+  transition: all 0.2s linear 0s;
+  background-color: #bf2042;
+}
+.effect.effect-5:before {
+  content: "";
+  font-family: FontAwesome;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-5:hover {
+  text-indent: 30px;
+}
+.effect.effect-5:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
+}
+
+.button-effect{
+  position: absolute;
+  transform: translate(-40%, 1000%);
+  text-align: center;
 }
