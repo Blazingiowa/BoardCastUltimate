@@ -130,7 +130,6 @@ $(function () {
     });
 
 });
-
 /*$(function () {
     $(".button-effect").click(function () {
         $("#upload_form").submit();

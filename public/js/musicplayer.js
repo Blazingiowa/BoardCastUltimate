@@ -39,6 +39,7 @@ $(function () {
         playNextTrackButton = $('#play-next'), currIndex = -1;
 
     function playPause() {
+
         setTimeout(function () {
             if (audio.paused) {
                 playerTrack.addClass('active');
@@ -46,6 +47,8 @@ $(function () {
                 checkBuffering();
                 i.attr('class', 'fas fa-pause');
                 audio.play();
+
+                $("#nowplatext").css({ "opacity": "0.9" }).fadeIn();
             }
             else {
                 playerTrack.removeClass('active');
@@ -54,6 +57,8 @@ $(function () {
                 albumArt.removeClass('buffering');
                 i.attr('class', 'fas fa-play');
                 audio.pause();
+
+                $("#nowplatext").fadeOut();
             }
         }, 300);
     }
@@ -270,12 +275,22 @@ $(function () {
 
     $("#nowplatext").textillate({
         loop: true,
-        minDisplayTime: 3000,
-        initialDelay: 1000,
+        minDisplayTime: 100,
+        initialDelay: 500,
         autoStart: true,
 
         in: {
-            effect: "fadeInRightBig"
+            effect: "fadeInUp",
+            delay: 50,
+            sync: false,
+            shuffle: false
+        },
+
+        out: {
+            effect: 'fadeOutDown',
+            delay: 50,
+            sync: false,
+            shuffle: false
         }
     })
 });

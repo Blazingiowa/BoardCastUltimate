@@ -6,16 +6,17 @@
   <title>BoardCastUltimate</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="./css/style.css">
-  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/video.css">
 
 
   <script src="./js/jquery-3.6.0.min.js"></script>
-  <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
   <script src="./js/jmap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   <script src="./js/script.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
 
   <script src="./js/boardcastultimate.js"></script>
   <script src="./js/videoboardcastultimate.js"></script>
@@ -215,6 +216,40 @@
           </div>
         </div>
         <div class="content-wrapper">
+
+          <div class="cards">
+            <% for(var i=0;i<videos.length;i++){ %>
+              <div class="card">
+                <div class="card__image-holder">
+                  <video class="card__image" data-setup={} playsinline>
+                    <source src="./userdata/video/<%=videos[i]%>" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-title">
+                  <a href="#" class="toggle-info btn">
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2 style="color:darkslategrey">
+                    <%=videos[i] %>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <div class="card-description" style="color:darkslategrey;">
+                    <%= videos[i] %>という名称の動画ファイルです。
+                  </div>
+                  <div class="card-flap flap2">
+                    <div class="card-actions">
+                      <a href="#" class="btns">動画を見る</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <%}%>
+
+          </div>
+
 
         </div>
       </div>

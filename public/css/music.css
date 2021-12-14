@@ -364,7 +364,7 @@
   cursor: pointer;
   overflow: hidden;
   color: #eb6ea5;
-  width: 160px;
+  width: 170px;
 }
 
 #downvolbtn {
@@ -379,7 +379,7 @@
   cursor: pointer;
   overflow: hidden;
   color: #2ca9e1;
-  width: 160px;
+  width: 170px;
 }
 
 .button__text {
@@ -496,16 +496,20 @@
 }
 
 #upvolbutton{
-    transform: translate(10px,1100%);
+  position: absolute;
+    transform: translate(10px,350%);
 }
 
 #downvolbtn{
-    transform: translate(140%,1000%);
+  position: absolute;
+    transform: translate(140%,350%);
 }
 
 #nowplatext{
   padding: 0;
   margin: 0;
   text-align: right;
-  transform: translate(0,800%);
+  transform: translate(400%,-800%);
+  color: #fff;
+  opacity: 0;
 }

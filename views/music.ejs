@@ -18,7 +18,6 @@
   <script src="./js/jquery.lettering.js"></script>
   <script src="./js/jquery.textillate.js"></script>
 
-  <script src="./js/boardcastultimate.js"></script>
   <script src="./js/videoboardcastultimate.js"></script>
 </head>
 
@@ -265,21 +264,7 @@
             </div>
           </div>
 
-          <div class="buttonvol" id="upvolbutton">
-            <span class="button__mask"></span>
-            <span class="button__text">音量を上げる</span>
-            <span class="button__text button__text--bis">音量を上げる</span>
-          </div>
 
-          <div class="buttonvol" id="downvolbtn">
-            <span class="button__mask"></span>
-            <span class="button__text">音量を下げる</span>
-            <span class="button__text button__text--bis">音量を下げる</span>
-          </div>
-
-          <div>
-            <p id="nowplatext">アニメーションアニメーションアニメーション</p>
-          </div>
 
           <!--コンテンツの終わり-->
         </div>
@@ -290,7 +275,7 @@
 
   <div id="musicfileslist" hidden>
     <% for(var i=0;i<music.length;i++){%>
-      <p>
+      <p class="musictitlelist">
         <%= music[i] %>
       </p>
       <% if(music[i].substr(0,3)=="滋賀県" ){ %>
@@ -304,7 +289,25 @@
           <% } %>
             <% } %>
   </div>
+
+  <div style="position: absolute;">
+    <p id="nowplatext">現在再生中...</p>
+  </div>
+
+  <div class="buttonvol" id="upvolbutton">
+    <span class="button__mask"></span>
+    <span class="button__text">音量を上げる</span>
+    <span class="button__text button__text--bis">音量を上げる</span>
+  </div>
+
+  <div class="buttonvol" id="downvolbtn">
+    <span class="button__mask"></span>
+    <span class="button__text">音量を下げる</span>
+    <span class="button__text button__text--bis">音量を下げる</span>
+  </div>
+
   <script src="./js/musicplayer.js"></script>
+
 </body>
 
 </html>
