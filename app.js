@@ -18,6 +18,9 @@ function Routing(url) {
         case "/music":
             app.use(url, require("./routes/music.js"));
             break;
+        case "/vscreen":
+            app.use(url, require("./routes/screen.js"));
+            break;
     }
 }
 
@@ -36,9 +39,23 @@ const { type } = require("os");
 //socketモジュール
 var http = require('http').Server(app);
 const io = require('socket.io')(http);
+const https = require('https');
+
+//https
+const sslServerkey = "server-key.pem";
+const sslServerCrt = "server-crt.pem";
+const fs = require('fs');
+
+var options = {
+    key: fs.readFileSync(sslServerkey),
+    cert: fs.readFileSync(sslServerCrt)
+};
 
 //path指定モジュール
 const path = require('path');
+const { fstat } = require("fs");
+const { request } = require("http");
+const { response } = require("express");
 
 //ejs設定
 app.set("view engine", "ejs");
@@ -49,6 +66,7 @@ app.set("view engine", "ejs");
 Routing("/upload");
 Routing("/video");
 Routing("/music");
+Routing("/vscreen");
 
 
 app.use("/", express.static(path.join(__dirname, 'public')))
@@ -56,31 +74,6 @@ app.use('/chat', ExpressRouting('public/chatroom.html'));
 app.use('/deb', ExpressRouting('public/titlewindow.html'));
 //app.use('/upload', ExpressRouting('public/upload.html'));
 //その他リクエストに対するエラー
-
-
-/**
- * ファイルのアップロードされたもの受け取り
- */
-
-
-/*const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        console.log(file);
-        cb(null, 'userdata')
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
-
-
-
-const storagefolda = multer({ storage: storage })
-
-app.post('/upfile', storagefolda.single('files'), function (req, res, next) {
-    console.log(req.file)
-})*/
-
 //主な拡張子
 const Expand = [".png", ".jpg", ".jpeg", ".mp3", ".wav", ".wave", ".aac", ".flac"];
 
@@ -163,7 +156,9 @@ function makeToken(id) {
     const str = "ouijaboarddemon" + id;
     return (crypto.createHash("sha1").update(str).digest('hex'));
 }
+
+var server = https.createServer(options, app);
 //3000番で待受
-http.listen(port, () => {
+server.listen(port, () => {
     console.log('3000番ポートで待受中です');
 });
